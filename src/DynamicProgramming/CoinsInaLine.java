@@ -7,6 +7,7 @@ import java.util.Collections;
 public class CoinsInaLine {
 	public static void main(String args[]){
 		ArrayList<Integer> temp = new ArrayList<Integer>(Arrays.asList(1,100,500,10));
+	
 		int result =maxcoin(temp);
 		System.out.println(result);
 	}
@@ -31,8 +32,7 @@ public class CoinsInaLine {
 		int DP[][] = new int[size][size];
 		int i =0;
 		int j = 0;
-		while( i> j){
-			DP[i][j] = Math.max(a.get(i) + Math.min(a, b))
-		}
+		
+		return 0;
 	}
 }

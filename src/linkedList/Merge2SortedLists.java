@@ -16,7 +16,7 @@ public class Merge2SortedLists {
 		D.next = E;
 		E.next = F;
 		ListNode V; 
-		V = mergeTwoLists(A,D);
+		V = mergeTwoLists1(A,D);
 		// print
 		printNodes(V);
 		
@@ -56,5 +56,33 @@ public class Merge2SortedLists {
 			System.out.println(A.val);
 			A = A.next;
 		}
+	}
+	public static ListNode mergeTwoLists1(ListNode a, ListNode b) {
+		ListNode main = new ListNode(0);
+		ListNode head = main;
+		ListNode first = a;
+		ListNode second = b;
+		while(first!= null && second!= null){
+			if(first.val <= second.val){
+				head.next = first;
+				head = head.next;
+				first= first.next;
+			}else{
+				head.next = second;
+				head = head.next;
+				second = second.next;
+			}
+		}
+		while( first!= null){
+			head.next = first;
+			head = head.next;
+			first= first.next;
+		}
+		while(second != null){
+			head.next = second;
+			head = head.next;
+			second = second.next;
+		}
+		return main.next;
 	}
 }

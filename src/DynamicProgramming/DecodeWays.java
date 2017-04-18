@@ -29,7 +29,9 @@ public class DecodeWays {
 	            t[i]+=t[i-2];
 	        }
 	    }
-	 
+	    for( int i=0; i<t.length ; i++){
+	    	//System.out.println(t[i]);
+	    }
 	    return t[s.length()];
 	}
 	 

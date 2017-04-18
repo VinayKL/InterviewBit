@@ -1,7 +1,15 @@
 package Arrays;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class MatrixDiagonally {
 	public static void main(String[] args){
+		
+		
+		
+		
+		
 		Integer Matrix[][] =new Integer [4][5];
 		int i,j;
 		int k=1;
@@ -55,3 +63,6 @@ public class MatrixDiagonally {
 		
 	}
 }
+
+
+

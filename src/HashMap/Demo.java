@@ -27,6 +27,7 @@ public class Demo {
 		if(check1){
 			System.out.println("Contains the value");	
 		}
+		map2.
 		// Keys and values seperatly
 		Set s1 = map.keySet();
 		Set s2 = (Set) map.values();

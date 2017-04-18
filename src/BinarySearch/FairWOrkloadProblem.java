@@ -7,34 +7,55 @@ import java.util.Collections;
 public class FairWOrkloadProblem {
 	public static void main(String args[]){
 		ArrayList<Integer> input = new ArrayList<Integer>(Arrays.asList(10, 20, 30, 40, 50, 60, 70, 80, 90));
-		int workers = 5;
+		int workers = 3;
 		System.out.println(workload(input,workers));
 	}
 	public static int workload(ArrayList<Integer> input, int workers){
 		int result =0;
 		int total = 0;
+		int max =0 ;
+		
 		ArrayList<Integer>workloads = new ArrayList<Integer>();
+		
+		// Get the upper and lower bounds to get started with 
+		max = input.get(0);
 		for( int i =0 ; i< input.size() ;i++){
 			total = total + input.get(i);
-		}
-		int partmax = total / workers;
-		int count = 0;
-		for( int i =0; i < input.size(); i++){
-			count = count + input.get(i);
-			if( count > partmax){
-				count = count - input.get(i);
-				workloads.add(count);
-				count = input.get(i);
+			if( input.get(i) >= max){
+				max =  input.get(i);
 			}
 		}
-		if( count >0){
-			workloads.add(count);
+		
+		System.out.println("Upper is "+ total + " lower is "+ max);
+		
+		int mid =0; 
+		while ( max <  total){
+			mid = (max + total) / 2;
+			int res =  compute( input, mid);
+			System.out.println(res);
+			if( res <= workers){
+				total = mid;
+			}else{
+				max = mid+1;
+			}
 		}
-		System.out.println(workloads);
-		if( workloads.size() > workers){
-			workloads.set(workers-1, workloads.get(workers-1)+ workloads.get(workers));
+		
+		return max-1;
+	}
+	private static int compute(ArrayList<Integer> input, int marker) {
+		int counter =0;
+		int value =0;
+		for ( int i=0 ;i <input.size() ;i++){
+			value = value + input.get(i);
+			if( value >= marker){
+				counter++;			
+				value = input.get(i);
+			}
 		}
-		result = Collections.max(workloads);
-		return result;
+		if( value >0){
+			counter++;
+		}
+		
+		return counter;
 	}
 }

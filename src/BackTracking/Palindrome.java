@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Palindrome {
 	public static void main(String args[]){
-		String a = "aababb";
+		String a = "aab";
 		ArrayList<ArrayList<String>> List = new ArrayList<ArrayList<String>>();
 		List = partition(a);
 		System.out.println(List);

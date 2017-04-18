@@ -42,5 +42,22 @@ public class Reverse {
 			A = A.next;
 		}
 	}
+	
+	public static ListNode ReverseA(ListNode A){
+		ListNode curr = A;
+		ListNode prev= null;
+		ListNode next;
+		ListNode head;
+		while( curr != null){
+			next = curr.next;
+			curr.next = prev;
+			prev = curr;
+			curr = next;
+		}
+		head= prev;
+		return head;
+		
+		
+	}
 
 }

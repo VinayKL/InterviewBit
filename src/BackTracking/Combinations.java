@@ -26,6 +26,6 @@ public class Combinations {
 			temp.add(i);
 			compute(result,n,k-1,i+1,temp);
 			temp.remove(temp.size()-1);
-		}
+		} 
 	}
 }

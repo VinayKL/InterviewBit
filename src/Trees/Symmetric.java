@@ -26,10 +26,19 @@ public class Symmetric {
 	
 	}
 	public static int isSymmetric(TreeNode a) {
-		int result =0;
-		
-		
-		return result;
-		
+	    int result = compute(a,a);
+	    return result;
+	}
+	public static int compute(TreeNode a, TreeNode b){
+	    if(a == null && b == null){
+	        return 1;
+	    }
+	    if( a== null || b == null){
+	        return 0;
+	    }
+	    if( a.val != b.val){
+	        return 0;
+	    }
+	    return compute(a.left,b.right) & compute(a.right,b.left);
 	}
 }

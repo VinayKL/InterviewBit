@@ -16,10 +16,10 @@ public class RotatebyKplaces {
 		D.next = E;
 		//E.next = F;
 		ListNode V;
-		int b = 6;
+		int b = 2;
 		// print the Linked List
 		//printNodes(A);
-		V =rotate(A,b);
+		V =rotate1(A,b);
 		//System.out.println("Final output is");
 		// print the Linked List
 		printNodes(V);
@@ -56,4 +56,31 @@ public class RotatebyKplaces {
 			A = A.next;
 		}
 	}
+	public static ListNode rotate1(ListNode a, int b){
+		int counter =1 ;
+		ListNode temp = a;
+		ListNode head =a;
+		ListNode curr = a;
+		ListNode prev= null;
+		while(temp.next!= null){
+			counter++;
+			temp = temp.next;
+		}
+		temp.next = a;
+		
+		b = b % counter;
+		
+		
+		int count = 0;
+		while(count != (counter-b)){
+			prev = curr;
+			curr=  curr.next;
+			count++;
+		}
+		
+		prev.next = null;
+		
+		return curr;
+	}
+	
 }

@@ -17,13 +17,14 @@ public class subset  {
 		result = subsets(input);
 		System.out.println(result);
 	}
-	public static ArrayList<ArrayList<Integer>> subsets(ArrayList<Integer> a) {
+	public static ArrayList<ArrayList<Integer>> subsets(ArrayList<Integer> a) {		
+		
 		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
-		//Collections.sort(a);
 		ArrayList<Integer> temp = new ArrayList<Integer>();
-		//temp.add(null);
+		// first one is a null . so add
 		result.add(temp);
-		//System.out.println(temp);
+		
+		// subsets of every possible size
 		for(int i=0;i<a.size() ;i++){
 			calculate(result,a.get(i));
 		}
@@ -41,6 +42,8 @@ public class subset  {
 	            return Integer.compare(a.size(), b.size());
 	        }
 	    });
+		
+		
 		return result;
 	}
 	public static void calculate(ArrayList<ArrayList<Integer>> result,int b){

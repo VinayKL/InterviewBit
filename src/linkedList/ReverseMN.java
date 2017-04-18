@@ -6,20 +6,20 @@ public class ReverseMN {
 		ListNode A = new ListNode(1);
 		ListNode B = new ListNode(2);
 		ListNode C = new ListNode(3);
-		ListNode D = new ListNode(4);
-		ListNode E = new ListNode(5);
-		ListNode F = new ListNode(6);
+		//ListNode D = new ListNode(4);
+		//ListNode E = new ListNode(5);
+		//ListNode F = new ListNode(6);
 		A.next = B;
 		B.next = C;
-		C.next = D;
-		D.next = E;
-		E.next = F;
+		C.next = null;
+		//D.next = E;
+		//E.next = F;
 		ListNode V;
 		// print the Linked List
 		//printNodes(A);
-		int m = 2;
-		int n = 4;
-		V =ReverseMN(A,m,n);
+		int m = 1;
+		int n = 2;
+		V =ReverseMN1(A,m,n);
 		//System.out.println("Final output is");
 		// print the Linked List
 		printNodes(V);
@@ -81,4 +81,64 @@ public class ReverseMN {
 			A = A.next;
 		}
 	}
+	public static ListNode ReverseMN1(ListNode head,int m, int n){
+		int counter =1 ;
+		ListNode temp = head;
+		while(temp.next!= null){
+			counter++;
+			temp = temp.next;
+		}
+		if( m>n || counter < n){
+			return head;
+		}
+		ListNode prev = null;
+		ListNode curr = head;
+		int count =0;
+		if( m!= 1){
+			while(count != m-1 ){
+				prev = curr;
+				curr = curr.next;
+				count++;
+			}
+			prev.next = null;
+		}
+		
+		ListNode end = curr;
+		ListNode endp = null;
+		while(count!= n){
+			endp = end;
+			end = end.next;
+			count++;
+		}
+		
+		ListNode conti= end;
+		endp.next = null;
+		ListNode rev = reverse(curr);
+		//printNodes(rev);
+		if( m != 1){
+			prev.next = rev;
+		}else{
+			head = rev;
+		}
+		
+		while(rev.next!= null){
+			rev= rev.next;
+		}
+		
+		rev.next = conti;
+		return head;
+	}
+	private static ListNode reverse(ListNode head) {
+		ListNode curr = head;
+		ListNode prev= null;
+		ListNode next = null;
+		while(curr!= null){
+			next = curr.next;
+			curr.next = prev;
+			prev= curr;
+			curr = next;
+		}
+		return prev;
+	}
+	
 }

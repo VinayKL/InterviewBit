@@ -1,26 +1,55 @@
 package StackQueue;
 
+import java.util.ArrayList;
+import java.util.Stack;
+
 public class AbsoluteDirectory {
 	public static void main(String args[]){
-		String A = "/a/./b/../../c/";
+		String A = "/../";
 		String result;
 		result = simplifyPath(A);
 		System.out.println(result);
 	}
 	public static String simplifyPath(String a) {
-		String A;
-		int counter =0;
-		String B[] = a.split("/");
-		for(String s : B){
-			//System.out.println(s);
-			counter++;
+		StringBuilder result = new StringBuilder();
+		ArrayList<String> res_temp = new ArrayList<String>();
+		if(a.charAt(a.length()-1)== '/'){
+			a = a.substring(0,a.length()-1);
 		}
-		A = "/"+B[counter-1];
-		//System.out.println(B[counter-1]);
-		if(B[counter-1].equals("..")){
-			//System.out.println("true");
+		
+		String chunks[] = a.split("/");
+		Stack<String> sk = new Stack();
+		for(int i= 0; i< chunks.length; i++){
+				if( !chunks[i].equals("") ){
+					sk.push(chunks[i]);
+				}
+		}
+		
+		int count_back =0;
+		
+		while(!sk.isEmpty()){
+			String curr = sk.pop();
+			if( curr.equals(".") ){
+				//do nothing
+			}else if ( curr.equals("..")){
+				count_back++;
+			}else{
+				if( count_back >0){
+					// skip the insertion
+					count_back--;
+				}else{
+					res_temp.add(curr);
+				}
+			}
+		}
+		if(res_temp.size() == 0){
 			return "/";
 		}
-	    return A;
+		for ( int i = res_temp.size()-1 ; i>=0 ;i--){
+			String s = res_temp.get(i);
+			result.append("/"+s);
+		}
+		
+		return result.toString();
 	}
 }

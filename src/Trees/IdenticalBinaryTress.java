@@ -47,7 +47,8 @@ public class IdenticalBinaryTress {
 		inorderprint(root);
 		
 	}
-	public static int isSameTree(TreeNode a, TreeNode b) {
+	  
+	public static int isSameTree1(TreeNode a, TreeNode b) {
 		int result =0;		 
 		result = compute(a,b,1);
 		return result;

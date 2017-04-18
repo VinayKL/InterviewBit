@@ -11,6 +11,7 @@ public class JustifiedTest {
 		System.out.println(output);
 	}
 	public static ArrayList<String> fullJustify(ArrayList<String> a, int b) {
+		
 		ArrayList<String> output = new ArrayList<String>();
 		int temp = 0;
 		String tempstr = null;

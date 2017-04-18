@@ -44,4 +44,8 @@ public class SwapAdjacent {
 			A = A.next;
 		}
 	}
+	public static ListNode SwapAdjacent(ListNode a){
+		
+	}
+
 }

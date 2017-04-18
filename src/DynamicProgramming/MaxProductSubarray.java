@@ -11,7 +11,7 @@ public class MaxProductSubarray {
 		System.out.println(result);
 	}
 	public static int maxProduct(final List<Integer> A) {
-		if (A == null)
+	    if (A == null)
 	        return 0;
 	    
 	    int n;
@@ -28,24 +28,18 @@ public class MaxProductSubarray {
 	        } else if (A.get(i) > 0) {
 	            max_pos *= A.get(i);
 	            if (max_neg * A.get(i) < 0){
-    	            max_neg *= A.get(i);
-	            }
-	            //System.out.println("i is "+i+" max_neg is "+ max_neg + " max_pos is "+max_pos);
-	        } else if(A.get(i)<0) {
+	            	 max_neg *= A.get(i);
+	            }  
+	            max = Math.max(max, max_pos);
+	        } else {
 	            int temp = max_pos;
 	            max_pos = Math.max(1, A.get(i) * max_neg);
 	            max_neg = A.get(i) * temp;
-	            //System.out.println("i is "+i+" max_neg is "+ max_neg + " max_pos is "+max_pos);
+	            if (max_pos != 1)
+    	            max = Math.max(max, max_pos);
 	        }
-	        if (max_pos > max){
-	            max =  max_pos; 
-	            //System.out.println("max changed "+max);
-	        } 
+	        
 	    }
-	    
-	    
-	    
 	    return max;
-	    
 	}
 }
